@@ -6,40 +6,46 @@ import { useNavigate } from "react-router-dom";
 const SignupPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post("/api/auth/register", { username, password });
-      alert("User registered successfully");
-      navigate("/login"); // Redirect to the login page
+      setMessage("User registered successfully");
+      setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
-      console.error("Signup failed:", error.response?.data?.message || error.message);
+      setMessage("Signup failed: " + error.response?.data?.message || error.message);
     }
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-      <button onClick={() => navigate("/login")}>Back to Login</button> {/* Add a back button */}
+    <div className="auth-container">
+      <div className="auth-form">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Sign Up</button>
+        </form>
+        {message && <p>{message}</p>}
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </div>
     </div>
   );
 };

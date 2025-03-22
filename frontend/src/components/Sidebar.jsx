@@ -3,39 +3,39 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
-    <div
-      style={{
-        width: "250px",
-        background: "#2c3e50",
-        color: "#fff",
-        padding: "20px",
-        height: "100%",
-      }}
-    >
-      <h3 style={{ marginBottom: "20px" }}>Menu</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        <li style={{ marginBottom: "10px" }}>
-          <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
-            Home
-          </Link>
+    <div className="sidebar">
+      <h3>Menu</h3>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
         </li>
-        <li style={{ marginBottom: "10px" }}>
-          <Link to="/create" style={{ color: "#fff", textDecoration: "none" }}>
-            Create Research
-          </Link>
+        <li>
+          <Link to="/create">Create Research</Link>
         </li>
-        <li style={{ marginBottom: "10px" }}>
-          <button onClick={() => handleLogout()}>Logout</button> {/* Logout button */}
+        <li>
+          <Link to="/plagiarism-check">Plagiarism Check</Link>
+        </li>
+        <li>
+          <Link to="/evaluate-paper">Evaluate Paper</Link>
+        </li>
+        <li>
+          <Link to="/search-papers">Search Research Papers</Link>
+        </li>
+        <li>
+          <Link to="/add-citation">Add Citation</Link>
+        </li>
+        <li>
+          <button onClick={handleLogout}>Logout</button>
         </li>
       </ul>
     </div>
   );
-};
-
-const handleLogout = () => {
-  localStorage.removeItem("token"); // Clear the token
-  window.location.href = "/login"; // Redirect to login page
 };
 
 export default Sidebar;

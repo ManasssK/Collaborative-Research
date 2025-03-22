@@ -5,8 +5,14 @@ import Research from "../models/ResearchModel.js";
 export const createResearch = async (req, res) => {
   try {
     const { title, abstract, collaborators } = req.body;
-    const newResearch = new Research({ title, abstract, collaborators });
+
+    // Generate a unique code
+    const uniqueCode = uuidv4().substring(0, 8); // Shorten UUID to 8 characters
+
+    // Create a new research paper
+    const newResearch = new Research({ title, abstract, collaborators, uniqueCode });
     await newResearch.save();
+
     res.status(201).json(newResearch);
   } catch (error) {
     res.status(500).json({ message: error.message });

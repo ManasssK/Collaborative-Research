@@ -15,7 +15,7 @@ const Navbar = () => {
         alignItems: "center",
       }}
     >
-      <h3>Research App</h3>
+      <h3>Collabrative Research App</h3>
       <p>Welcome, {username}</p>
     </nav>
   );

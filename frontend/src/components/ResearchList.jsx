@@ -1,34 +1,48 @@
 // frontend/src/components/ResearchList.jsx
 import React, { useEffect, useState } from "react";
-import { getAllResearch } from "../api/researchApi";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ResearchList = () => {
   const [researchPapers, setResearchPapers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchResearch = async () => {
       try {
-        const data = await getAllResearch(); // Calls /api/research (GET)
-        setResearchPapers(data);
+        const response = await axios.get("/api/research");
+        setResearchPapers(response.data);
       } catch (error) {
-        console.error("Failed to fetch research papers:", error);
+        console.error("Failed to fetch research papers:", error.response?.data || error.message);
       }
     };
     fetchResearch();
   }, []);
 
+  const handleDelete = async (title) => {
+    try {
+      await axios.delete(`/api/research/${encodeURIComponent(title)}`);
+      setResearchPapers((prevPapers) => prevPapers.filter((paper) => paper.title !== title));
+    } catch (error) {
+      console.error("Failed to delete paper:", error.response?.data || error.message);
+    }
+  };
+
   return (
     <div>
-      <h2>Research Papers</h2>
-      <ul>
-        {researchPapers.map((paper) => (
-          <li key={paper._id}>
-            <h3>{paper.title}</h3>
-            <p>{paper.abstract}</p>
-            <p>Collaborators: {paper.collaborators.join(", ")}</p>
-          </li>
-        ))}
-      </ul>
+      {researchPapers.length === 0 ? (
+        <p>No research papers found.</p>
+      ) : (
+        <ul>
+          {researchPapers.map((paper) => (
+            <li key={paper._id}>
+              <span>{paper.title}</span>
+              <button onClick={() => navigate(`/edit-paper/${encodeURIComponent(paper.title)}`)}>Edit</button>
+              <button onClick={() => handleDelete(paper.title)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

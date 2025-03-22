@@ -13,39 +13,41 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/auth/login", { username, password });
-      localStorage.setItem("token", response.data.token); // Store token
-      localStorage.setItem("username", username); // Store username
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("username", username);
       setMessage("Login Successful");
-      setTimeout(() => {
-        navigate("/"); // Redirect to home page after 2 seconds
-      }, 2000);
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       setMessage("Login failed: " + error.response?.data?.message || error.message);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      {message && <p>{message}</p>} {/* Display success/error message */}
-      <button onClick={() => navigate("/signup")}>Back to Sign Up</button>
+    <div className="auth-container">
+      <div className="auth-form">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        {message && <p>{message}</p>}
+        <p>
+          Don't have an account? <a href="/signup">Sign Up</a>
+        </p>
+      </div>
     </div>
   );
 };

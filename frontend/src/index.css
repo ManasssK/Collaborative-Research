@@ -1,68 +1,251 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7; /* Light gray background */
+  color: #1d1d1f; /* Dark text color */
+  line-height: 1.6;
+}
+
+/* Login and Signup Pages */
+.auth-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1d1d1f, #3a3a3c); /* Dark gradient */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.auth-form {
+  background: #ffffff; /* Pure white */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.auth-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #1d1d1f; /* Dark text */
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px solid #d1d1d6; /* Light gray border */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #f5f5f7; /* Light gray background for inputs */
+  color: #1d1d1f; /* Dark text */
+}
+
+.auth-form input:focus {
+  border-color: #3a3a3c; /* Darker gray border on focus */
+  outline: none;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: #1d1d1f; /* Dark background for buttons */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.auth-form button:hover {
+  background: #3a3a3c; /* Slightly lighter dark background on hover */
+}
+
+.auth-form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #8e8e93; /* Medium gray text */
+}
+
+.auth-form a {
+  color: #0071e3; /* Blue link color (Apple-style) */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-form a:hover {
+  text-decoration: underline;
+}
+
+/* Home Page */
+.home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #1d1d1f; /* Dark sidebar */
+  color: #ffffff; /* White text */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text */
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 0.8rem 0;
+}
+
+.sidebar ul li a,
+.sidebar ul li button {
+  color: #ffffff; /* White text */
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  display: block;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li button:hover {
+  background: #3a3a3c; /* Slightly lighter dark background on hover */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #f5f5f7; /* Light gray background */
+}
+
+.navbar {
+  background: #ffffff; /* Pure white */
+  color: #1d1d1f; /* Dark text */
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar h3 {
+  font-size: 1.2rem;
+  color: #1d1d1f; /* Dark text */
+}
+
+.research-list {
+  padding: 1rem;
+}
+
+.research-list h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1d1d1f; /* Dark text */
+}
+
+.research-list ul {
+  list-style: none;
+}
+
+.research-list ul li {
+  background: #ffffff; /* Pure white */
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.research-list ul li h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #1d1d1f; /* Dark text */
+}
+
+.research-list ul li p {
+  font-size: 0.9rem;
+  color: #8e8e93; /* Medium gray text */
+}
+
+/* Create Research Page */
+.create-research-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1d1d1f, #3a3a3c); /* Dark gradient */
+}
+
+.create-research-form {
+  background: #ffffff; /* Pure white */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.create-research-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #1d1d1f; /* Dark text */
+}
+
+.create-research-form input,
+.create-research-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px solid #d1d1d6; /* Light gray border */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #f5f5f7; /* Light gray background for inputs */
+  color: #1d1d1f; /* Dark text */
+}
+
+.create-research-form input:focus,
+.create-research-form textarea:focus {
+  border-color: #3a3a3c; /* Darker gray border on focus */
+  outline: none;
+}
+
+.create-research-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: #1d1d1f; /* Dark background for buttons */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.create-research-form button:hover {
+  background: #3a3a3c; /* Slightly lighter dark background on hover */
 }

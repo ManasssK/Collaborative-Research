@@ -6,17 +6,11 @@ import ResearchList from "./ResearchList";
 
 const HomePage = () => {
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar */}
+    <div className="home-container">
       <Sidebar />
-
-      {/* Main Content */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        {/* Navbar */}
+      <div className="main-content">
         <Navbar />
-
-        {/* Research List */}
-        <div style={{ padding: "20px" }}>
+        <div className="research-list">
           <h2>Research Papers</h2>
           <ResearchList />
         </div>

@@ -4,7 +4,7 @@ import Research from "../models/ResearchModel.js";
 
 const router = express.Router();
 
-// Create a new research paper
+// CREATE a new research paper
 router.post("/", async (req, res) => {
   try {
     const { title, abstract, collaborators } = req.body;
@@ -16,26 +16,30 @@ router.post("/", async (req, res) => {
     }
 
     // Create a new research paper
-    const newResearch = new Research({ title, abstract, collaborators });
-    await newResearch.save();
+    const newResearch = new Research({
+      title,
+      abstract,
+      collaborators: Array.isArray(collaborators) ? collaborators : [], // Ensure collaborators is an array
+    });
 
-    res.status(201).json(newResearch);
+    await newResearch.save();
+    res.status(201).json({ message: "Research paper created successfully", paper: newResearch });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Get all research papers
+// GET all research papers (exclude sensitive fields like content)
 router.get("/", async (req, res) => {
   try {
-    const researchPapers = await Research.find();
+    const researchPapers = await Research.find({}, { title: 1, collaborators: 1 }); // Exclude abstract and other fields
     res.status(200).json(researchPapers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Get a single research paper by title
+// GET a single research paper by title
 router.get("/:title", async (req, res) => {
   try {
     const { title } = req.params;
@@ -51,15 +55,46 @@ router.get("/:title", async (req, res) => {
   }
 });
 
-// Update the content of a research paper
+// ADD collaborators to a research paper
+router.post("/:title/add-collaborators", async (req, res) => {
+  try {
+    const { title } = req.params;
+    const { collaborators } = req.body;
+
+    // Ensure collaborators are provided as an array
+    if (!Array.isArray(collaborators) || collaborators.length === 0) {
+      return res.status(400).json({ message: "Collaborators must be provided as a non-empty array" });
+    }
+
+    // Find the paper by title
+    const paper = await Research.findOne({ title });
+
+    if (!paper) {
+      return res.status(404).json({ message: "Paper not found" });
+    }
+
+    // Add new collaborators to the existing list (avoid duplicates)
+    const uniqueCollaborators = [...new Set([...paper.collaborators, ...collaborators])];
+    paper.collaborators = uniqueCollaborators;
+
+    // Save the updated paper
+    await paper.save();
+
+    res.status(200).json({ message: "Collaborators added successfully", paper });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// UPDATE a research paper by title
 router.put("/:title", async (req, res) => {
   try {
     const { title } = req.params;
-    const { content } = req.body;
+    const { abstract, collaborators } = req.body;
 
     const updatedPaper = await Research.findOneAndUpdate(
       { title },
-      { content }, // Update the content field
+      { abstract, collaborators }, // Update fields
       { new: true } // Return the updated document
     );
 
@@ -67,13 +102,13 @@ router.put("/:title", async (req, res) => {
       return res.status(404).json({ message: "Paper not found" });
     }
 
-    res.status(200).json({ message: "Paper content updated successfully" });
+    res.status(200).json({ message: "Paper updated successfully", paper: updatedPaper });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// Delete a research paper by title
+// DELETE a research paper by title
 router.delete("/:title", async (req, res) => {
   try {
     const { title } = req.params;

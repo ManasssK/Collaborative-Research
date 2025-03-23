@@ -18,12 +18,13 @@ const LoginPage = () => {
       setMessage("Login Successful");
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
-      setMessage("Login failed: " + error.response?.data?.message || error.message);
+      console.error("Login failed:", error.response?.data || error.message);
+      setMessage("Login failed: " + (error.response?.data?.message || error.message));
     }
   };
 
   return (
-    <div className="auth-container">
+    <div className="login-container">
       <div className="auth-form">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -43,7 +44,11 @@ const LoginPage = () => {
           />
           <button type="submit">Login</button>
         </form>
+
+        {/* Display success or error messages */}
         {message && <p>{message}</p>}
+
+        {/* Link to Sign-Up Page */}
         <p>
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>

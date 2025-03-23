@@ -249,3 +249,346 @@ body {
 .create-research-form button:hover {
   background: #3a3a3c; /* Slightly lighter dark background on hover */
 }
+
+/* frontend/src/styles.css */
+
+/* Login Page */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Background gradient */
+  background-image: url("/login.jpg"); /* Add your background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.login-form {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Glass effect */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Transparent black border */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+  color: #333;
+}
+
+.login-form input:focus {
+  border-color: rgba(0, 0, 0, 0.5); /* Darker transparent border on focus */
+  outline: none;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: #6a11cb; /* Blue button background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button:hover {
+  background: #500ac1; /* Slightly darker blue on hover */
+}
+
+/* frontend/src/styles.css */
+
+/* Sign-Up Page */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  background-image: url("/login.jpg"); /* Same background image as login page */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.signup-form {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Glass effect */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Transparent black border */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+  color: #333;
+}
+
+.signup-form input:focus {
+  border-color: rgba(0, 0, 0, 0.5); /* Darker transparent border on focus */
+  outline: none;
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: #6a11cb; /* Blue button background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signup-form button:hover {
+  background: #500ac1; /* Slightly darker blue on hover */
+}
+
+.signup-form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #8e8e93; /* Medium gray text */
+  text-align: center;
+}
+
+.signup-form p a {
+  color: #0071e3; /* Blue link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Home Page */
+.home-container {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/ResearchList.jpg"); /* Optional: Add background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for sidebar */
+  background: #1d1d1f; /* Dark background for sidebar */
+  color: #ffffff; /* White text */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-content {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  flex-direction: column; /* Stack navbar and research list vertically */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  background: rgba(255, 255, 255, 0.8); /* Glassmorphism effect */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 1rem;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.research-list {
+  flex: 1; /* Take up remaining vertical space */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  background: rgba(255, 255, 255, 0.8); /* Glassmorphism effect */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.research-list h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.research-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.research-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque background for each paper */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.research-list li span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.research-list li button {
+  background: #6a11cb; /* Blue button background */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.research-list li button:hover {
+  background: #500ac1; /* Slightly darker blue on hover */
+}
+
+/* frontend/src/styles.css */
+
+/* Home Page and Research List */
+.home-container {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/ResearchList.jpg"); /* Add overlay for contrast */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  overflow: hidden; /* Prevent scrollbars on the container */
+  border-radius: 0%;
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for sidebar */
+  background: #1d1d1f; /* Dark background for sidebar */
+  color: #ffffff; /* White text */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.main-content {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  flex-direction: column; /* Stack navbar and research list vertically */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  background: rgba(255, 255, 255, 0.8); /* Glassmorphism effect */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 1rem;
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+}
+
+.research-list {
+  flex: 1; /* Take up remaining vertical space */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  background: rgba(255, 255, 255, 0.8); /* Glassmorphism effect */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+}
+
+.research-list h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.research-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.research-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque background for each paper */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+}
+
+.research-list li span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.research-list li button {
+  background: #6a11cb; /* Blue button background */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.research-list li button:hover {
+  background: #500ac1; /* Slightly darker blue on hover */
+}
